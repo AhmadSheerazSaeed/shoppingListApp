@@ -1,0 +1,77 @@
+.categorySection {
+  /* border: 1px solid black; */
+  height: 100%;
+}
+
+.categorySection h1 {
+  font-size: 2rem;
+  text-align: center;
+  color: white;
+  margin-top: 1rem;
+}
+
+.inputSection {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.inputSection input,
+.inputSection button {
+  border: none;
+  border-radius: 2px;
+  outline: 0.5px solid white;
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.inputSection input,
+::placeholder {
+  color: white;
+}
+
+.inputSection button {
+  cursor: pointer;
+}
+
+.deleteIconCategory {
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+.allCategoryDisplaySection {
+  width: 250px;
+  /* border: 1px solid red; */
+  height: 500px;
+  margin: 2rem auto 0 auto;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+}
+
+/* .allCategoryDisplaySection::-webkit-scrollbar-thumb {
+  background-color: red;
+  color: yellow;
+  width: 15px;
+} */
+
+.allCategoryDisplaySection h2 {
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.singleCategoryDisplayWithDeleteButton {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 0.5px solid wheat;
+  margin-bottom: 1rem;
+}
+
+.singleCategoryDisplayWithDeleteButton p {
+  font-size: 1.7rem;
+  color: white;
+}

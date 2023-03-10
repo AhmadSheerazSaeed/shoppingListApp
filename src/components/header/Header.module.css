@@ -1,0 +1,9 @@
+.headerSection {
+  background-color: #333333;
+  /* background-color: #6b48c5; */
+  color: white;
+  font-size: 10rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 3rem;
+}

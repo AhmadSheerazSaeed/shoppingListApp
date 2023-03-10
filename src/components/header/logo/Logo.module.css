@@ -1,0 +1,8 @@
+.logoDiv {
+  display: flex;
+}
+
+.linkLogo {
+  color: white;
+  text-decoration: none;
+}

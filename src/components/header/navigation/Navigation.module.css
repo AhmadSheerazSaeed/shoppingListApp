@@ -1,0 +1,33 @@
+.navSection {
+  display: flex;
+  flex-direction: column;
+  font-size: 7rem;
+}
+
+.navSection button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-align: end;
+}
+
+.navSection nav {
+  position: absolute;
+  /* background-color: #333333; */
+  background-color: #6b48c5;
+  border: 0.5px solid white;
+
+  border-radius: 2px;
+  top: 65px;
+  right: 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.navLink {
+  color: white;
+}

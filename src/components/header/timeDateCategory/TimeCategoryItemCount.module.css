@@ -1,0 +1,9 @@
+.timeDisplay {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.timeDisplay p {
+  font-size: 1.7rem;
+}

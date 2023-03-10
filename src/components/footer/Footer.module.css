@@ -1,0 +1,14 @@
+.footerSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  /* background-color: #333333; */
+  background-color: #6b48c5;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.copyIcon {
+  font-size: 2rem;
+}

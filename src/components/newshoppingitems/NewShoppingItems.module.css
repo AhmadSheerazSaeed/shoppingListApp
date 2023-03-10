@@ -1,0 +1,37 @@
+.wrapperDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1,
+h4 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 1rem;
+  color: white;
+}
+
+.selectCategory {
+  display: flex;
+  justify-content: center;
+  color: white;
+  width: 300px;
+  height: 400px;
+}
+
+.selectCategory label,
+.selectCategory label select {
+  font-size: 1.7rem;
+  color: white;
+  padding: 0.3rem;
+}
+
+.selectCategory select {
+  border-radius: 4px;
+}
+
+.selectCategory label select {
+  margin-left: 1rem;
+  width: 80px;
+}
