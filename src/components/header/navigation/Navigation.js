@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BsPlusLg, BsXLg } from "react-icons/bs";
+import { MdOutlineSegment } from "react-icons/md";
 import { Link } from "react-router-dom";
 import NavigationCSS from "./Navigation.module.css";
 

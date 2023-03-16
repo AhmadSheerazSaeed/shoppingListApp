@@ -1,20 +1,25 @@
-// add and remove categories
-
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import { useContext } from "react";
-import { CategoryContext } from "./CategoryContext";
 import AddOrDeleteCategoriesCSS from "./AddOrDeleteCategories.module.css";
 import { AiOutlineDelete } from "react-icons/ai";
+import { CategoryContext } from "./CategoryContext";
 
 function AddOrDeleteCategories() {
+  // store the category enter by the user
   const [categoryInput, setCategoryInput] = useState("");
 
-  const { categories, setCategories, addNewCategory, deleteCategory } =
-    useContext(CategoryContext);
+  // get the categoryState and dispatch from the categoryContext.js
+  const { categoryState, dispatch } = useContext(CategoryContext);
 
-  const addCategoryLocalFunc = () => {
-    addNewCategory(categoryInput);
+  // function to add new category in the categoryReducer
+  const addNewCategoryfunc = (e) => {
+    dispatch({ type: "addNewCategory", payload: categoryInput });
     setCategoryInput("");
+  };
+
+  // function to delete the category in the categoryReducer
+  const deleteCategory = (category) => {
+    dispatch({ type: "deleteCategory", payload: category });
   };
 
   return (
@@ -23,42 +28,46 @@ function AddOrDeleteCategories() {
       <section className={AddOrDeleteCategoriesCSS.inputSection}>
         <input
           autoFocus
+          name="categoryInput"
           value={categoryInput}
           type="text"
           placeholder="Enter Category"
           onChange={(e) => setCategoryInput(e.target.value)}
         />
-        <button onClick={addCategoryLocalFunc}>Add</button>
+        <button onClick={addNewCategoryfunc}>Add</button>
       </section>
-
-      <section className={AddOrDeleteCategoriesCSS.allCategoryDisplaySection}>
-        {/*  <section className="singleCategoryDisplayWithDeleteButton">
+      {
+        <section className={AddOrDeleteCategoriesCSS.allCategoryDisplaySection}>
+          {/*  <section className="singleCategoryDisplayWithDeleteButton">
           <p>Fruits</p>
           <AiOutlineDelete type="button" className="deleteIconCategory" />
         </section> */}
-        {categories !== null && categories.length > 0 ? (
-          categories.map((elem, i) => (
-            <section
-              key={i}
-              className={
-                AddOrDeleteCategoriesCSS.singleCategoryDisplayWithDeleteButton
-              }
-            >
-              <p>
-                {elem.substring(0, 1).toUpperCase()}
-                {elem.substring(1)}
-              </p>
-              <AiOutlineDelete
-                type="button"
-                className="deleteIconCategory"
-                onClick={() => deleteCategory(elem)}
-              />
-            </section>
-          ))
-        ) : (
-          <h2>No Category Exist!</h2>
-        )}
-      </section>
+
+          {categoryState.length > 0 ? (
+            categoryState.map((category, i) => (
+              <section
+                key={i}
+                className={
+                  AddOrDeleteCategoriesCSS.singleCategoryDisplayWithDeleteButton
+                }
+              >
+                <p>
+                  {category.substring(0, 1).toUpperCase()}
+                  {category.substring(1)}
+                </p>
+
+                <AiOutlineDelete
+                  type="button"
+                  className={AddOrDeleteCategoriesCSS.deleteIconCategory}
+                  onClick={() => deleteCategory(category)}
+                />
+              </section>
+            ))
+          ) : (
+            <h2>No Category Exist!</h2>
+          )}
+        </section>
+      }
     </section>
   );
 }

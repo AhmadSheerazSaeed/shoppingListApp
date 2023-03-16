@@ -1,74 +1,30 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useReducer } from "react";
+import { categoryReducer } from "./CategoryReducer";
 
 export const CategoryContext = createContext();
 
 function CategoryContextProvider({ children }) {
-  const [categories, setCategories] = useState([]);
-  let isCategoryExist = false;
+  let [categoryState, dispatch] = useReducer(categoryReducer, []);
 
-  const addNewCategory = (newCategoryArg = "") => {
-    // convert the entered category to lowercase before saving
-    newCategoryArg = newCategoryArg.toLowerCase();
-
-    if (newCategoryArg === "") {
-      alert("Please, enter the category");
-    }
-    // check if the category already exist or not
-    else if (
-      // categories !== null &&
-      newCategoryArg !== "" &&
-      categories.length > 0
-    ) {
-      isCategoryExist = categories.some((elem) => elem === newCategoryArg);
-      // console.log(isCategoryExist);
-    }
-
-    if (isCategoryExist) {
-      alert("Categorty already exist!");
-    }
-
-    if (
-      isCategoryExist === false &&
-      newCategoryArg !== "" &&
-      categories !== null
-    ) {
-      const newArr = [...categories, newCategoryArg];
-      setCategories(newArr);
-    }
-  };
-
-  // function to delete the category
-  function deleteCategory(categoryToDelete) {
-    const newCategoryList = categories.filter(
-      (elem) => elem !== categoryToDelete
-    );
-
-    setCategories(newCategoryList);
-  }
-
-  // get data from local storage on initial render
+  // this useEffect will get the data from local storage on first render
+  // and set the state by calling the dispatch
   useEffect(() => {
     const categoriesFromLocalStorage = JSON.parse(
-      localStorage.getItem("categories")
+      localStorage.getItem("category")
     );
 
-    // console.log("from local storage : ", categoriesFromLocalStorage);
-    if (categoriesFromLocalStorage === null) {
-      setCategories([]);
-    } else {
-      setCategories(categoriesFromLocalStorage);
+    if (categoriesFromLocalStorage !== null) {
+      dispatch({ type: "getCategory", payload: categoriesFromLocalStorage });
     }
   }, []);
 
-  // store data to local storage on every render
+  // this useEffect will store data to local storage
   useEffect(() => {
-    localStorage.setItem("categories", JSON.stringify(categories));
-  }, [categories]);
+    localStorage.setItem("category", JSON.stringify(categoryState));
+  }, [categoryState]);
 
   return (
-    <CategoryContext.Provider
-      value={{ categories, setCategories, addNewCategory, deleteCategory }}
-    >
+    <CategoryContext.Provider value={{ categoryState, dispatch }}>
       {children}
     </CategoryContext.Provider>
   );

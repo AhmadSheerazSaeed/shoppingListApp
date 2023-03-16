@@ -1,12 +1,12 @@
 import React from "react";
 import { MdCopyright } from "react-icons/md";
-import "./Footer.module.css";
+import FooterCSS from "./Footer.module.css";
 
 function Footer() {
   return (
-    <section className="footerSection">
-      <MdCopyright className="copyIcon" /> 2023 http://sheeraz.me (All rights
-      reserved)
+    <section className={FooterCSS.footerSection}>
+      <MdCopyright className={FooterCSS.copyIcon} /> 2023 http://sheeraz.me (All
+      rights reserved)
     </section>
   );
 }

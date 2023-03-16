@@ -1,51 +1,172 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { CategoryContext } from "../addordeletecategories/CategoryContext";
 import NewShoppingItemsCSS from "./NewShoppingItems.module.css";
+import { NewShoppingItemsContext } from "./NewShoppingItemsContext";
+import { MdOutlineDeleteSweep } from "react-icons/md";
 
 function NewShoppingItems() {
-  const { categories } = useContext(CategoryContext);
+  // categories from the category context saved in local storage
+  const { categoryState } = useContext(CategoryContext);
 
-  // const [selectOptionValue, setSelectOptionValue] = useState("");
-  let selectOptionValue = "";
+  const { itemState, dispatch } = useContext(NewShoppingItemsContext);
 
-  if (categories.length > 0) {
-    selectOptionValue = categories[0];
-  }
+  // on first render stores the first category in the categoryState
+  // and after stores the selected category from the drop down
+  const [selectedCategory, setSelectedCategory] = useState();
 
-  function handleSelectChange(e) {
-    console.log(e.target.value);
-    // console.log(selectOptionValue);
-  }
+  //  store the item from the input
+  const [inputItem, setInputItem] = useState("");
 
-  return (
-    <div className={NewShoppingItemsCSS.wrapperDiv}>
-      <h1>Add Items To Buy</h1>
+  // function to handle and store the selected category from the drop down
+  const handleCategorySelect = (e) => {
+    setSelectedCategory(e.target.value);
+  };
 
-      <section
-        name="selectCategory"
-        className={NewShoppingItemsCSS.selectCategory}
-      >
-        {categories.length > 0 ? (
+  // function to set input item state
+  const handleItemInput = (e) => {
+    setInputItem(e.target.value);
+  };
+
+  // function to handle add item button
+  const addItemBtn = () => {
+    dispatch({ type: "ADD_ITEM", payload: { selectedCategory, inputItem } });
+    setInputItem("");
+  };
+
+  // function to delete the item
+  const handleItemDelete = (itemToDelete, categoryToDelete) => {
+    dispatch({
+      type: "DELETE_ITEM",
+      payload: { itemToDelete, categoryToDelete },
+    });
+    // console.log(itemToDelete, categoryToDelete);
+  };
+
+  // store the first category in the categoryState
+  useEffect(() => {
+    setSelectedCategory(categoryState[0]);
+  }, [categoryState]);
+
+  // console.log(itemState);
+  // const sortedItemState = itemState.sort((a, b) =>
+  //   a.category.localeCompare(b.category)
+  // );
+  // console.log(sortedItemState);
+
+  if (categoryState.length > 0) {
+    return (
+      <div className={NewShoppingItemsCSS.wrapperDiv}>
+        <h1>Add Items To Buy</h1>
+
+        <section
+          name="selectCategory"
+          className={NewShoppingItemsCSS.selectCategory}
+        >
           <label>
-            Select Categorty
-            <select value={selectOptionValue} onChange={handleSelectChange}>
-              {categories.map((category, i) => (
-                <option key={i} value={category}>
-                  {category}
-                </option>
+            Select Category
+            <select
+              defaultValue={selectedCategory}
+              onChange={handleCategorySelect}
+            >
+              {categoryState.map((elem, i) => (
+                <option key={i}>{elem}</option>
               ))}
             </select>
           </label>
-        ) : (
-          <h4>
-            Please add categories <br />
-            in the menu
-          </h4>
-        )}
-      </section>
-    </div>
-  );
+        </section>
+
+        <section className={NewShoppingItemsCSS.inputItemSection}>
+          <input
+            value={inputItem}
+            name="itemInput"
+            type="text"
+            placeholder="Enter Item, please"
+            onChange={handleItemInput}
+          />
+          <button onClick={addItemBtn}>Add Item</button>
+        </section>
+
+        <section
+          className={NewShoppingItemsCSS.categoriesAndItemsDisplaySection}
+        >
+          {itemState.length > 0 ? (
+            <section
+              className={NewShoppingItemsCSS.dispayOneCategoryWithItemsSection}
+            >
+              {itemState.map((elemInItemState, i) => (
+                <div key={i} className={NewShoppingItemsCSS.categoryPTag}>
+                  {elemInItemState.category}
+
+                  {elemInItemState.items.length > 0
+                    ? elemInItemState.items.map((elemInItems, i) => (
+                        <section
+                          key={i}
+                          className={
+                            NewShoppingItemsCSS.itemAndDeleteBtnSection
+                          }
+                        >
+                          <p className={NewShoppingItemsCSS.itemPTag}>
+                            {elemInItems}
+                          </p>
+                          <MdOutlineDeleteSweep
+                            type="button"
+                            onClick={() => {
+                              handleItemDelete(
+                                elemInItems,
+                                elemInItemState.category
+                              );
+                            }}
+                            className={NewShoppingItemsCSS.itemDeleteBtn}
+                          />
+                        </section>
+                      ))
+                    : null}
+                </div>
+              ))}
+              {/*            <p className={NewShoppingItemsCSS.categoryPTag}>Category</p>
+
+              <section className={NewShoppingItemsCSS.itemAndDeleteBtnSection}>
+                <p className={NewShoppingItemsCSS.itemPTag}>Items</p>
+                <p className={NewShoppingItemsCSS.itemPTag}>X</p>
+              </section>
+              <section className={NewShoppingItemsCSS.itemAndDeleteBtnSection}>
+                <p className={NewShoppingItemsCSS.itemPTag}>Items</p>
+                <p className={NewShoppingItemsCSS.itemPTag}>X</p>
+              </section>
+              <section className={NewShoppingItemsCSS.itemAndDeleteBtnSection}>
+                <p className={NewShoppingItemsCSS.itemPTag}>Items</p>
+                <p className={NewShoppingItemsCSS.itemPTag}>X</p>
+          </section>*/}
+            </section>
+          ) : (
+            <h4>No Items To Display</h4>
+          )}
+        </section>
+      </div>
+    );
+  } else {
+    return (
+      <h4>
+        Please add categories <br />
+        by choosing <br />
+        Add or Delete Categories <br />
+        from the menu
+      </h4>
+    );
+  }
 }
 
 export default NewShoppingItems;
+
+// {itemState.map((elemInItemState, i) => (
+//   <p key={i} className={NewShoppingItemsCSS.categoryPTag}>
+//     {elemInItemState.category}
+
+//     {elemInItemState.items.length > 0
+//       ? elemInItemState.items.map((elemInItems, i) => (
+//           <p key={i}>{elemInItems}</p>
+//         ))
+//       : null}
+//   </p>
+// ))}

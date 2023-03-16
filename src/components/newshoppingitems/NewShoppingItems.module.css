@@ -1,7 +1,15 @@
+:root {
+  --normalTextFontSize: 1.6rem;
+  --normalTextColor: white;
+}
+
 .wrapperDiv {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* border: 5px solid red; */
+  height: 100%;
+  width: 100%;
 }
 
 h1,
@@ -9,29 +17,121 @@ h4 {
   font-size: 2.5rem;
   text-align: center;
   margin-top: 1rem;
-  color: white;
+  color: var(--normalTextColor);
+}
+
+h4 {
+  font-size: 2rem;
 }
 
 .selectCategory {
   display: flex;
   justify-content: center;
-  color: white;
+  align-items: center;
+  color: var(--normalTextColor);
   width: 300px;
-  height: 400px;
+  height: 50px;
+  /* border: 5px solid green; */
 }
 
 .selectCategory label,
 .selectCategory label select {
-  font-size: 1.7rem;
-  color: white;
+  font-size: var(--normalTextFontSize);
+  color: var(--normalTextColor);
   padding: 0.3rem;
 }
 
 .selectCategory select {
   border-radius: 4px;
+  border: none;
+  /* outline: 0.5px solid rgba(255, 255, 255, 1); */
+
+  border-bottom: 0.5px solid rgba(255, 255, 255, 1);
+  border-top: 0.5px solid rgba(255, 255, 255, 1);
+  /* border-left: 0.5px solid rgba(255, 255, 255, 1); */
+
+  border-radius: 8px;
 }
 
 .selectCategory label select {
   margin-left: 1rem;
   width: 80px;
+}
+
+.inputItemSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--normalTextColor);
+  width: 340px;
+  height: 50px;
+  /* border: 5px solid green; */
+  gap: 0.9rem;
+}
+
+.inputItemSection label {
+  font-size: var(--normalTextFontSize);
+}
+
+.inputItemSection input {
+  color: var(--normalTextColor);
+  font-size: var(--normalTextFontSize);
+  border: none;
+  border-bottom: 1px solid white;
+  padding: 0.3rem;
+}
+
+.inputItemSection input::placeholder {
+  opacity: 0.4;
+}
+
+.inputItemSection button {
+  color: var(--normalTextColor);
+  font-size: var(--normalTextFontSize);
+  border: none;
+  cursor: pointer;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 1);
+  border-top: 0.5px solid rgba(255, 255, 255, 1);
+  /* border-left: 0.5px solid rgba(255, 255, 255, 1); */
+
+  border-radius: 8px;
+  padding: 0.3rem;
+}
+
+.categoriesAndItemsDisplaySection {
+  width: 95%;
+  height: 450px;
+  padding-top: 1rem;
+  overflow-y: scroll;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dispayOneCategoryWithItemsSection {
+  width: 95%;
+  /* border: 1px solid white; */
+  color: var(--normalTextColor);
+  /* padding: 1rem; */
+}
+
+.categoryPTag {
+  font-size: var(--normalTextFontSize);
+  padding: 1rem 0.3rem 0.3rem 0.3rem;
+}
+
+.itemAndDeleteBtnSection {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+.itemPTag {
+  font-size: var(--normalTextFontSize);
+  padding: 0.2rem 2rem;
+}
+
+.itemDeleteBtn {
+  font-size: 2rem;
+  cursor: pointer;
 }
