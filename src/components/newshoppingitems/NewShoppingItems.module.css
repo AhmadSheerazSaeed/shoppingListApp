@@ -81,11 +81,12 @@ h4 {
   padding: 0.3rem;
 }
 
-.inputItemSection input::placeholder {
+.newItemInput::placeholder {
+  color: white;
   opacity: 0.4;
 }
 
-.inputItemSection button {
+.newItemAddBtn {
   color: var(--normalTextColor);
   font-size: var(--normalTextFontSize);
   border: none;
@@ -96,6 +97,7 @@ h4 {
 
   border-radius: 8px;
   padding: 0.3rem;
+  margin-left: 1rem;
 }
 
 .categoriesAndItemsDisplaySection {

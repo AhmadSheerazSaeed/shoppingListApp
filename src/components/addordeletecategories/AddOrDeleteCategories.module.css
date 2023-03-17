@@ -13,27 +13,38 @@
 .inputSection {
   margin-top: 1rem;
   display: flex;
+  width: 100%;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
-.inputSection input,
-.inputSection button {
+.categoryInputStyle {
+  margin: 0;
   border: none;
+  border-bottom: 1px solid white;
+  padding: 0.3rem;
   border-radius: 2px;
-  outline: 0.5px solid white;
-  padding: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: white;
 }
 
-.inputSection input,
-::placeholder {
+.categoryInputStyle::placeholder {
   color: white;
+  opacity: 0.4;
 }
 
-.inputSection button {
+.btnAddCategory {
+  color: var(--normalTextColor);
+  font-size: var(--normalTextFontSize);
+  border: none;
   cursor: pointer;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 1);
+  border-top: 0.5px solid rgba(255, 255, 255, 1);
+  /* border-left: 0.5px solid rgba(255, 255, 255, 1); */
+
+  border-radius: 8px;
+  padding: 0.3rem 0.5rem;
+  margin-left: 1rem;
 }
 
 .deleteIconCategory {

@@ -13,6 +13,7 @@ function AddOrDeleteCategories() {
 
   // function to add new category in the categoryReducer
   const addNewCategoryfunc = (e) => {
+    e.preventDefault();
     dispatch({ type: "addNewCategory", payload: categoryInput });
     setCategoryInput("");
   };
@@ -26,15 +27,24 @@ function AddOrDeleteCategories() {
     <section className="categorySection">
       <h1>Add or Delete Categories</h1>
       <section className={AddOrDeleteCategoriesCSS.inputSection}>
-        <input
-          autoFocus
-          name="categoryInput"
-          value={categoryInput}
-          type="text"
-          placeholder="Enter Category"
-          onChange={(e) => setCategoryInput(e.target.value)}
-        />
-        <button onClick={addNewCategoryfunc}>Add</button>
+        <form className="inputForm">
+          <input
+            className={AddOrDeleteCategoriesCSS.categoryInputStyle}
+            autoFocus
+            name="categoryInput"
+            value={categoryInput}
+            type="text"
+            placeholder="Enter Category"
+            onChange={(e) => setCategoryInput(e.target.value)}
+          />
+
+          <button
+            className={AddOrDeleteCategoriesCSS.btnAddCategory}
+            onClick={addNewCategoryfunc}
+          >
+            Add
+          </button>
+        </form>
       </section>
       {
         <section className={AddOrDeleteCategoriesCSS.allCategoryDisplaySection}>

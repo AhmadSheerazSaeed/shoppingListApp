@@ -29,7 +29,8 @@ function NewShoppingItems() {
   };
 
   // function to handle add item button
-  const addItemBtn = () => {
+  const addItemBtn = (e) => {
+    e.preventDefault();
     dispatch({ type: "ADD_ITEM", payload: { selectedCategory, inputItem } });
     setInputItem("");
   };
@@ -77,14 +78,22 @@ function NewShoppingItems() {
         </section>
 
         <section className={NewShoppingItemsCSS.inputItemSection}>
-          <input
-            value={inputItem}
-            name="itemInput"
-            type="text"
-            placeholder="Enter Item, please"
-            onChange={handleItemInput}
-          />
-          <button onClick={addItemBtn}>Add Item</button>
+          <form>
+            <input
+              className={NewShoppingItemsCSS.newItemInput}
+              value={inputItem}
+              name="itemInput"
+              type="text"
+              placeholder="Enter Item, please"
+              onChange={handleItemInput}
+            />
+            <button
+              onClick={addItemBtn}
+              className={NewShoppingItemsCSS.newItemAddBtn}
+            >
+              Add Item
+            </button>
+          </form>
         </section>
 
         <section
