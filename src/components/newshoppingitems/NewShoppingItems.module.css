@@ -121,6 +121,13 @@ h4 {
   padding: 1rem 0.3rem 0.3rem 0.3rem;
 }
 
+.categoryHeading {
+  font-size: var(--normalTextColor);
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 1.5px;
+}
+
 .itemAndDeleteBtnSection {
   display: flex;
   justify-content: space-between;

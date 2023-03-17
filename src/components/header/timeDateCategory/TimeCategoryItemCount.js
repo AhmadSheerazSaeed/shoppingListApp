@@ -33,7 +33,7 @@ function TimeCategoryItemCount() {
           {`${currentTime.toLocaleTimeString()} on ${currentTime.toLocaleDateString()}`}
         </p>
         <p>
-          {totalItems} Items in {totalCategories}{" "}
+          {totalItems} {totalItems > 1 ? "items" : "item"} in {totalCategories}
           {totalCategories > 1 ? "catgories" : "catgory"}
         </p>
       </section>

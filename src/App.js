@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import AddOrDeleteCategories from "./components/addordeletecategories/AddOrDeleteCategories";
 import CategoryContextProvider from "./components/addordeletecategories/CategoryContext";
 import NewShoppingItemsContextProvider from "./components/newshoppingitems/NewShoppingItemsContext";
+import Contact from "./components/contact/Contact";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
                   path="/addordeletecategories"
                   element={<AddOrDeleteCategories />}
                 />
+                <Route path="/contact" element={<Contact />} />
               </Routes>
             </section>
           </BrowserRouter>

@@ -37,7 +37,11 @@ function Navigation() {
             Add or Delete Categories
           </Link>
 
-          <Link onClick={changeIconNavState} className={NavigationCSS.navLink}>
+          <Link
+            onClick={changeIconNavState}
+            className={NavigationCSS.navLink}
+            to="/contact"
+          >
             Contact
           </Link>
         </nav>

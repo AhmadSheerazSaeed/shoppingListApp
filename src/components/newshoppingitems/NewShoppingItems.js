@@ -96,7 +96,11 @@ function NewShoppingItems() {
             >
               {itemState.map((elemInItemState, i) => (
                 <div key={i} className={NewShoppingItemsCSS.categoryPTag}>
-                  {elemInItemState.category}
+                  {/*elemInItemState.category*/}
+                  <p className={NewShoppingItemsCSS.categoryHeading}>
+                    {elemInItemState.category.substring(0, 1).toUpperCase()}
+                    {elemInItemState.category.substring(1)}
+                  </p>
 
                   {elemInItemState.items.length > 0
                     ? elemInItemState.items.map((elemInItems, i) => (
@@ -107,7 +111,8 @@ function NewShoppingItems() {
                           }
                         >
                           <p className={NewShoppingItemsCSS.itemPTag}>
-                            {elemInItems}
+                            {elemInItems.substring(0, 1).toUpperCase()}
+                            {elemInItems.substring(1)}
                           </p>
                           <MdOutlineDeleteSweep
                             type="button"

@@ -9,7 +9,7 @@ export function categoryReducer(state, action) {
     // or if the payload is empty, after all the checking the new category adds
     // to local storage
     case "addNewCategory": {
-      if (action.payload === "") {
+      if (action.payload.trim() === "") {
         alert("Please enter the category!");
         return state;
       } else if (state.includes(action.payload)) {
