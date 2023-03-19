@@ -27,7 +27,7 @@ function Navigation() {
             className={NavigationCSS.navLink}
             to="/"
           >
-            Enter New Items
+            Enter New Shopping Items
           </Link>
           <Link
             onClick={changeIconNavState}
@@ -43,6 +43,14 @@ function Navigation() {
             to="/contact"
           >
             Contact
+          </Link>
+
+          <Link
+            onClick={changeIconNavState}
+            className={NavigationCSS.navLink}
+            to="/help"
+          >
+            Help
           </Link>
         </nav>
       )}

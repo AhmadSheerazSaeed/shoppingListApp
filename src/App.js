@@ -7,6 +7,7 @@ import AddOrDeleteCategories from "./components/addordeletecategories/AddOrDelet
 import CategoryContextProvider from "./components/addordeletecategories/CategoryContext";
 import NewShoppingItemsContextProvider from "./components/newshoppingitems/NewShoppingItemsContext";
 import Contact from "./components/contact/Contact";
+import Help from "./components/help/Help";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
                   element={<AddOrDeleteCategories />}
                 />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/help" element={<Help />} />
               </Routes>
             </section>
           </BrowserRouter>
