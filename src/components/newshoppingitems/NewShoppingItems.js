@@ -58,7 +58,9 @@ function NewShoppingItems() {
   if (categoryState.length > 0) {
     return (
       <div className={NewShoppingItemsCSS.wrapperDiv}>
-        <h1>Add Items To Buy</h1>
+        <h1 className={NewShoppingItemsCSS.headingAddItems}>
+          Add Items To Buy
+        </h1>
 
         <section
           name="selectCategory"
