@@ -54,25 +54,27 @@ function AddOrDeleteCategories() {
         </section> */}
 
           {categoryState.length > 0 ? (
-            categoryState.map((category, i) => (
-              <section
-                key={i}
-                className={
-                  AddOrDeleteCategoriesCSS.singleCategoryDisplayWithDeleteButton
-                }
-              >
-                <p>
-                  {category.substring(0, 1).toUpperCase()}
-                  {category.substring(1)}
-                </p>
+            categoryState
+              .sort((a, b) => (a > b ? 1 : -1))
+              .map((category, i) => (
+                <section
+                  key={i}
+                  className={
+                    AddOrDeleteCategoriesCSS.singleCategoryDisplayWithDeleteButton
+                  }
+                >
+                  <p>
+                    {category.substring(0, 1).toUpperCase()}
+                    {category.substring(1)}
+                  </p>
 
-                <AiOutlineDelete
-                  type="button"
-                  className={AddOrDeleteCategoriesCSS.deleteIconCategory}
-                  onClick={() => deleteCategory(category)}
-                />
-              </section>
-            ))
+                  <AiOutlineDelete
+                    type="button"
+                    className={AddOrDeleteCategoriesCSS.deleteIconCategory}
+                    onClick={() => deleteCategory(category)}
+                  />
+                </section>
+              ))
           ) : (
             <h2>No Category Exist!</h2>
           )}

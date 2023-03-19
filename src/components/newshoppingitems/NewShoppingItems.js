@@ -103,41 +103,43 @@ function NewShoppingItems() {
             <section
               className={NewShoppingItemsCSS.dispayOneCategoryWithItemsSection}
             >
-              {itemState.map((elemInItemState, i) => (
-                <div key={i} className={NewShoppingItemsCSS.categoryPTag}>
-                  {/*elemInItemState.category*/}
-                  <p className={NewShoppingItemsCSS.categoryHeading}>
-                    {elemInItemState.category.substring(0, 1).toUpperCase()}
-                    {elemInItemState.category.substring(1)}
-                  </p>
+              {itemState
+                .sort((a, b) => (a.category > b.category ? 1 : -1))
+                .map((elemInItemState, i) => (
+                  <div key={i} className={NewShoppingItemsCSS.categoryPTag}>
+                    {/*elemInItemState.category*/}
+                    <p className={NewShoppingItemsCSS.categoryHeading}>
+                      {elemInItemState.category.substring(0, 1).toUpperCase()}
+                      {elemInItemState.category.substring(1)}
+                    </p>
 
-                  {elemInItemState.items.length > 0
-                    ? elemInItemState.items.map((elemInItems, i) => (
-                        <section
-                          key={i}
-                          className={
-                            NewShoppingItemsCSS.itemAndDeleteBtnSection
-                          }
-                        >
-                          <p className={NewShoppingItemsCSS.itemPTag}>
-                            {elemInItems.substring(0, 1).toUpperCase()}
-                            {elemInItems.substring(1)}
-                          </p>
-                          <MdOutlineDeleteSweep
-                            type="button"
-                            onClick={() => {
-                              handleItemDelete(
-                                elemInItems,
-                                elemInItemState.category
-                              );
-                            }}
-                            className={NewShoppingItemsCSS.itemDeleteBtn}
-                          />
-                        </section>
-                      ))
-                    : null}
-                </div>
-              ))}
+                    {elemInItemState.items.length > 0
+                      ? elemInItemState.items.map((elemInItems, i) => (
+                          <section
+                            key={i}
+                            className={
+                              NewShoppingItemsCSS.itemAndDeleteBtnSection
+                            }
+                          >
+                            <p className={NewShoppingItemsCSS.itemPTag}>
+                              {elemInItems.substring(0, 1).toUpperCase()}
+                              {elemInItems.substring(1)}
+                            </p>
+                            <MdOutlineDeleteSweep
+                              type="button"
+                              onClick={() => {
+                                handleItemDelete(
+                                  elemInItems,
+                                  elemInItemState.category
+                                );
+                              }}
+                              className={NewShoppingItemsCSS.itemDeleteBtn}
+                            />
+                          </section>
+                        ))
+                      : null}
+                  </div>
+                ))}
               {/*            <p className={NewShoppingItemsCSS.categoryPTag}>Category</p>
 
               <section className={NewShoppingItemsCSS.itemAndDeleteBtnSection}>

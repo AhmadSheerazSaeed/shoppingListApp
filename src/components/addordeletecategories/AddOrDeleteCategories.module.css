@@ -18,9 +18,11 @@
   gap: 1rem;
 }
 
-.categoryInputStyle {
+.categoryInputStyle,
+.categoryInputStyle:focus {
   margin: 0;
   border: none;
+  outline: none;
   border-bottom: 1px solid white;
   padding: 0.3rem;
   border-radius: 2px;
